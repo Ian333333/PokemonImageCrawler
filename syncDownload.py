@@ -9,14 +9,14 @@ def download(num):
         img = soup.select('meta[property="og:image"]')
         imgUrl = img[0]['content']
         imgFile = requests.get(imgUrl)
-        f = open(f'images/{num}.png', 'wb')
+        f = open(f'images/{int(num)}.png', 'wb')
         f.write(imgFile.content)
         f.close()
-        print(num)
+        # print(int(num))
     except Exception as e:
         print(e)
         pass
-
+# 截至Gen9共1025只宝可梦
 numArr = [f'{j:04d}' for j in range(1,1026)]  # 建立圖片檔名清單
 
 executor = ThreadPoolExecutor()          # 建立非同步的多執行緒的啟動器
